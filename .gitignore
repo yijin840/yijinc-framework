@@ -1,0 +1,122 @@
+# 编译生成的可执行文件
+*.exe
+*.out
+*.app
+
+# 编译生成的对象文件和预编译头
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.ncb
+*.sdf
+*.idb
+*.pdb
+
+# CMake 生成的文件和目录
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.make
+*.mk
+
+# Bazel 构建系统生成的文件
+bazel-*
+*.bazel-*
+
+# 其他构建系统生成的文件
+*.elf
+*.ko
+
+# Qt Creator 生成的文件
+*.pro.user
+
+# Visual Studio 项目生成的文件
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# Xcode 项目生成的文件
+.DS_Store
+*.pbxuser
+*.xcuserstate
+*.xcuserdata
+*.xccheckout
+
+# 其他 IDE 生成的文件
+.idea/
+*.iml
+
+# 编译器特定的配置文件
+*.swp
+*.swo
+*.swn
+
+# 其他临时文件和日志
+*.tmp
+*.log
+*.bak
+*.tmp_proj
+
+# 依赖管理文件
+vendor/
+node_modules/
+*.gemfile.lock
+Gemfile.lock
+yarn.lock
+package-lock.json
+
+# 其他
+Thumbs.db
+_ReSharper*/
+*.[Tt]humbs
+*.Spotlight-V100
+*.DS_Store
+
+# Visual Studio Code
+
+# User-specific settings
+.vscode/settings.json
+.vscode/settings.json.bak
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
+
+# VSCode workspace-specific settings
+.vscode/sftp.json
+.vscode/gruntfile.js
+.vscode/gulpfile.js
+
+# User-specific project settings
+.vscode/*.code-workspace
+
+# VSCode project-wide settings
+.vscode/
+
+# VSCode workspace state
+.vscode/.workbench.state.json
+
+# VSCode UI state
+.vscode/*.json
+
+# VSCode project-wide extensions
+.vscode/extensions/
+
+# VSCode portable settings
+.vscode-portable/
+
+# VSCode project-specific extensions
+.vscode/*/extensions/
+
+# Codenix
+.vscode/bin/
+
+.history
+build
+CmakeCache.txt
+!lib/**
+cmake-build-debug
