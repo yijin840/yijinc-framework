@@ -1,6 +1,6 @@
-#include "beast_http.hpp"
+#include "beast_http.h"
 #include "cipher.hpp"
-#include "i_http.hpp"
+#include "i_http.h"
 #include "logger.hpp"
 #include <curl/curl.h>
 #include <vector>

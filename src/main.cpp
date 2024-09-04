@@ -1,5 +1,4 @@
-#include "i_http.hpp"
-#include "logger.hpp"
+#include "common/logger.h"
 #include <fstream>
 #include <map>
 #include <nlohmann/json.hpp>
@@ -7,7 +6,6 @@
 
 using json = nlohmann::json;
 using logger = yijinc::Logger;
-using http_client = yijinc::IHttp;
 
 int main(int argc, char *argv[]) {
     // 示例日志记录

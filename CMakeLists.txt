@@ -4,8 +4,8 @@ project(yijinc VERSION 0.1.0 LANGUAGES C CXX)
 #cmake_policy(SET CMP0167 NEW)
 
 # 这里设置的是C标准
-set(CMAKE_C_STANDARD 17)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_C_STANDARD 20)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(Boost_USE_STATIC_LIBS ON)
@@ -36,7 +36,7 @@ find_package(OpenSSL 3.3.1 REQUIRED)
 # find_package(log4cplus 2.1.1 REQUIRED)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resources/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
-file(GLOB SOURCES "src/*")
+file(GLOB SOURCES src/* src/common/* src/exception/* src/http/* src/wss/*)
 # 添加src
 include_directories(src
         ${CMAKE_CURRENT_SOURCE_DIR}/test
@@ -58,7 +58,8 @@ link_directories(${LOG4CPLUS_LIBRARY_DIRS}
 # 添加可执行文件
 add_executable(yijinc ${SOURCES}
         src/exception/yijinc_exception.cpp
-        src/exception/yijinc_exception.h)
+        src/exception/yijinc_exception.h
+        src/common/logger_macro.h)
 
 target_compile_definitions(yijinc PRIVATE BUFFERSIZE=16777216)
 #开启DEBUG （按需开启）
