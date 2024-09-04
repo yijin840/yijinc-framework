@@ -5,25 +5,28 @@
 #include <string>
 
 using json = nlohmann::json;
-using logger = yijinc::Logger;
+
+
+void testLog() {
+    // 使用格式化日志记录
+    LOG_INFO("This is a message: {}, test => {}, float ==> {}", "aa", 1, 1.2f);
+    LOG_DEBUG("Debugging with int: {}, float: {}", 42, 3.14);
+    LOG_WARN("Warning with message: {}", "Be careful");
+    LOG_ERROR("Error occurred with code: {}", -1);
+}
 
 int main(int argc, char *argv[]) {
-    // 示例日志记录
-    logger::initLogger(argc, argv);
-    // http_client::init_ssl();
-    // http_client::set_proxy("127.0.0.1", "7897");
-    logger::info("test log format info ==> {}", "hello world");
+    LOG_INIT("log4cplus.properties"); // 初始化日志系统
+    testLog();
+
+    LOG_INFO("test log format info ==> {}", "hello world");
     std::fstream f("test.json");
     if (f.is_open()) {
-        logger::info("file is opened");
+        LOG_INFO("file is opened");
     }
     json data = json::parse(f);
-    logger::info("json pi ==> {}", data["pi"].dump());
+    LOG_INFO("json pi ==> {}", data["pi"].dump());
     //file close
     f.close();
-    std::map<std::string, std::string> headers;
-    headers["Content-Type"] = "application/json";
-    // const std::string &&resp = http::post("http://www.baidu.com", headers,
-    // ""); logger::info("resp => {}", resp);
     return 0;
 }

@@ -8,7 +8,6 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
-using logger = yijinc::Logger;
 
 std::vector<unsigned char> yijinc::Cipher::hmacSha256(const std::string &key, const std::string &message) {
     std::vector<unsigned char> result(EVP_MD_size(EVP_sha256()));

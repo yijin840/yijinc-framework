@@ -28,7 +28,7 @@ namespace yijinc {
          */
         virtual std::string
         get(const std::string &url,
-            const std::string & std::map<std::string, std::string>&headers,
+            std::map<std::string, std::string> &headers,
             const std::map<std::string, std::string> &params);
 
         /**

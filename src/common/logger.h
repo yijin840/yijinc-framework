@@ -1,11 +1,6 @@
 #ifndef LOGGER_HPP
 #define LOGGER_HPP
 
-// 初始化日志系统
-#define LOG_INIT() \
-log4cplus::Initializer initializer; \
-log4cplus::BasicConfigurator config; \
-config.configure();
 
 #include "log4cplus/consoleappender.h"
 #include "log4cplus/logger.h"
@@ -13,48 +8,28 @@ config.configure();
 #include <fmt/core.h>
 #include <log4cplus/configurator.h>
 #include <log4cplus/loggingmacros.h>
+#include "string"
 
-namespace yijinc {
-    // 自定义命名空间
+// 初始化日志系统
+#define LOG_INIT(config_file) \
+log4cplus::PropertyConfigurator::doConfigure(LOG4CPLUS_TEXT(config_file))
 
-    class Logger {
-    public:
-        static void initLogger(int argc, char *argv[]) {
-            log4cplus::initialize();
-            log4cplus::PropertyConfigurator::doConfigure("log4cplus.properties");
-        }
+#define FILE_NAME std::string(__FILE_NAME__)
+// 获取日志实例
+#define GET_LOGGER() log4cplus::Logger::getInstance(LOG4CPLUS_TEXT(FILE_NAME + "#" + __FUNCTION__))
 
-        static log4cplus::Logger &getLogger() {
-            static log4cplus::Logger logger = log4cplus::Logger::getRoot();
-            return logger;
-        }
+// 封装日志记录
+#define LOG_INFO(fmt_str, ...) \
+LOG4CPLUS_INFO(GET_LOGGER(), fmt::format(fmt_str, ##__VA_ARGS__))
 
-        template<typename T, typename... Args>
-        static void info(const T &message, Args &&... args) {
-            if (auto &logger = getLogger(); logger.isEnabledFor(log4cplus::INFO_LOG_LEVEL)) {
-                const std::string formatted_message =
-                        fmt::format(message, std::forward<Args>(args)...);
-                LOG4CPLUS_INFO(logger, formatted_message);
-            }
-        }
+#define LOG_DEBUG(fmt_str, ...) \
+LOG4CPLUS_DEBUG(GET_LOGGER(), fmt::format(fmt_str, ##__VA_ARGS__))
 
-        template<typename T, typename... Args>
-        static void warn(const T &message, Args &&... args) {
-            if (auto &logger = getLogger(); logger.isEnabledFor(log4cplus::WARN_LOG_LEVEL)) {
-                const std::string formatted_message =
-                        fmt::format(message, std::forward<Args>(args)...);
-                LOG4CPLUS_WARN(logger, formatted_message);
-            }
-        }
+#define LOG_WARN(fmt_str, ...) \
+LOG4CPLUS_WARN(GET_LOGGER(), fmt::format(fmt_str, ##__VA_ARGS__))
 
-        template<typename T, typename... Args>
-        static void error(const T &message, Args &&... args) {
-            if (auto &logger = getLogger(); logger.isEnabledFor(log4cplus::ERROR_LOG_LEVEL)) {
-                const std::string formatted_message =
-                        fmt::format(message, std::forward<Args>(args)...);
-                LOG4CPLUS_ERROR(logger, formatted_message);
-            }
-        }
-    };
-} // namespace yijinc
-#endif // LOGGER_HPP
+#define LOG_ERROR(fmt_str, ...) \
+LOG4CPLUS_ERROR(GET_LOGGER(), fmt::format(fmt_str, ##__VA_ARGS__))
+
+
+#endif

@@ -4,4 +4,5 @@
 #ifndef LOGGER_MACRO_H
 #define LOGGER_MACRO_H
 
+
 #endif //LOGGER_MACRO_H
