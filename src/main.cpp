@@ -3,6 +3,8 @@
 #include <map>
 #include <nlohmann/json.hpp>
 #include <string>
+#include <boost/stacktrace.hpp>
+#include "exception/yijinc_exception.h"
 
 using json = nlohmann::json;
 
@@ -13,6 +15,17 @@ void testLog() {
     LOG_DEBUG("Debugging with int: {}, float: {}", 42, 3.14);
     LOG_WARN("Warning with message: {}", "Be careful");
     LOG_ERROR("Error occurred with code: {}", -1);
+}
+
+void testError() {
+    try {
+        LOG_INFO("hello world");
+        throw YijincException("test");
+    } catch (const YijincException &e) {
+        LOG_ERROR("YijincException: {}", e.getOffsetTrace());
+        LOG_ERROR("YijincException: {}", e.getStackTrace());
+        throw YijincException("aaa");
+    }
 }
 
 int main(int argc, char *argv[]) {
@@ -28,5 +41,11 @@ int main(int argc, char *argv[]) {
     LOG_INFO("json pi ==> {}", data["pi"].dump());
     //file close
     f.close();
+    try {
+        testError();
+    } catch (const std::exception &e) {
+        LOG_ERROR("std::exception: {}", e.what());
+    }
+    LOG_INFO("test log format info ==> {}", "hello world");
     return 0;
 }
