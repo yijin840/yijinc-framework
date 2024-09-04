@@ -2,6 +2,4 @@
 #define YIJINC_CURL_HTTP_HPP_
 
 
-
-
 #endif

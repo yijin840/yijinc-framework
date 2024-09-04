@@ -56,7 +56,9 @@ link_directories(${LOG4CPLUS_LIBRARY_DIRS}
         ${CURL_LIBRARY_DIRS}
 )
 # 添加可执行文件
-add_executable(yijinc ${SOURCES})
+add_executable(yijinc ${SOURCES}
+        src/exception/yijinc_exception.cpp
+        src/exception/yijinc_exception.h)
 
 target_compile_definitions(yijinc PRIVATE BUFFERSIZE=16777216)
 #开启DEBUG （按需开启）

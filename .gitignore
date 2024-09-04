@@ -120,3 +120,4 @@ build
 CmakeCache.txt
 !lib/**
 cmake-build-debug
+logs
