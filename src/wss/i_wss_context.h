@@ -5,10 +5,10 @@
 #define I_WSS_CONTEXT_H
 
 namespace yijinc {
-    class IWssContext {
-    public:
-        virtual ~IWssContext() = delete;
-    };
+class IWssContext {
+public:
+    virtual ~IWssContext() = delete;
+};
 }
 
-#endif //I_WSS_CONTEXT_H
+#endif // I_WSS_CONTEXT_H

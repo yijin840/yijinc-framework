@@ -8,12 +8,10 @@
 #include "i_wss_context.h"
 
 namespace yijinc {
-    class beast_wss_context : public std::shared_ptr<IWssContext> {
-    public:
-        ~beast_wss_context() = delete;
-
-    };
+class BeastWssContext : public std::shared_ptr<IWssContext> {
+public:
+    ~BeastWssContext() = delete;
+};
 }
 
-
-#endif //BEAST_WSS_CONTEXT_H
+#endif // BEAST_WSS_CONTEXT_H

@@ -1,13 +1,12 @@
 #include "common/logger.h"
+#include "exception/yijinc_exception.h"
+#include <boost/stacktrace.hpp>
 #include <fstream>
 #include <map>
 #include <nlohmann/json.hpp>
 #include <string>
-#include <boost/stacktrace.hpp>
-#include "exception/yijinc_exception.h"
 
 using json = nlohmann::json;
-
 
 void testLog() {
     // 使用格式化日志记录
@@ -21,14 +20,14 @@ void testError() {
     try {
         LOG_INFO("hello world");
         throw YijincException("test");
-    } catch (const YijincException &e) {
+    } catch (const YijincException& e) {
         LOG_ERROR("YijincException: {}", e.getOffsetTrace());
         LOG_ERROR("YijincException: {}", e.getStackTrace());
         throw YijincException("aaa");
     }
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
     LOG_INIT("log4cplus.properties"); // 初始化日志系统
     testLog();
 
@@ -39,11 +38,11 @@ int main(int argc, char *argv[]) {
     }
     json data = json::parse(f);
     LOG_INFO("json pi ==> {}", data["pi"].dump());
-    //file close
+    // file close
     f.close();
     try {
         testError();
-    } catch (const std::exception &e) {
+    } catch (const std::exception& e) {
         LOG_ERROR("std::exception: {}", e.what());
     }
     LOG_INFO("test log format info ==> {}", "hello world");

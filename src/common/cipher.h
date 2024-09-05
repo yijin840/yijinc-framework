@@ -4,15 +4,14 @@
 #include <vector>
 
 namespace yijinc {
-    class Cipher {
-    public:
-        static std::vector<unsigned char> hmacSha256(const std::string &key,
-                                                     const std::string &data);
+class Cipher {
+public:
+    static std::vector<unsigned char> hmacSha256(const std::string& key, const std::string& data);
 
-        static std::string base64_encode(const std::vector<unsigned char> &input);
+    static std::string base64_encode(const std::vector<unsigned char>& input);
 
-        static std::vector<unsigned char> hex_to_bytes(const std::string &hex);
-    };
+    static std::vector<unsigned char> hex_to_bytes(const std::string& hex);
+};
 } // namespace yijinc
 
 #endif

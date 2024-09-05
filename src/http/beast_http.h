@@ -31,10 +31,10 @@ namespace urls = boost::urls;
 using tcp = net::ip::tcp;
 
 namespace yijinc {
-    class BeastHttp final : public std::unique_ptr<IHttp> {
-    public:
-        ~BeastHttp() = default;
+class BeastHttp final : public std::unique_ptr<IHttp> {
+public:
+    ~BeastHttp() = default;
 
-    }; // namespace yijinc
+}; // namespace yijinc
 }
 #endif

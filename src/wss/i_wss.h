@@ -1,63 +1,63 @@
 #ifndef WSS_HPP
 #define WSS_HPP
-#include <string>
 #include <iostream>
+#include <string>
 #include <vector>
 
 #include "i_wss_context.h"
 
 namespace yijinc {
-    class IWss {
-    public:
-        ~IWss() = delete;
+class IWss {
+public:
+    virtual ~IWss() = delete;
 
-        //连接
-        std::string connect();
+    // 连接
+    virtual std::string connect() = 0;
 
-        std::string onConnect();
+    virtual std::string onConnect() = 0;
 
-        //心跳
-        std::string ping();
+    // 心跳
+    virtual std::string ping() = 0;
 
-        std::string pong();
+    virtual std::string pong() = 0;
 
-        std::string onPing();
+    virtual std::string onPing() = 0;
 
-        std::string onPong();
+    virtual std::string onPong() = 0;
 
-        //异常
-        std::string onError();
+    // 异常
+    virtual std::string onError() = 0;
 
-        //订阅
-        std::string subscribe();
+    // 订阅
+    virtual std::string subscribe() = 0;
 
-        std::string unSubscribe();
+    virtual std::string unSubscribe() = 0;
 
-        //信息
-        std::string sendMessage();
+    // 信息
+    virtual std::string sendMessage() = 0;
 
-        std::string readMessage();
+    virtual std::string readMessage() = 0;
 
-        //异步
-        void start();
+    // 异步
+    virtual void start() = 0;
 
-        void stop();
+    virtual void stop() = 0;
 
-        void asyncSendMessage(std::string message);
+    virtual void asyncSendMessage() = 0;
 
-        void asyncReadMessage();
+    virtual void asyncReadMessage() = 0;
 
-        //服务
-        void startServer();
+    // 服务
+    virtual void startServer() = 0;
 
-        void restartServer();
+    virtual void restartServer() = 0;
 
-        void stopServer();
+    virtual void stopServer() = 0;
 
-    protected:
-        std::vector<std::string> subscriptTopic;
-        std::shared_ptr<IWssContext> wss_context_;
-    };
+protected:
+    std::vector<std::string> subscriptTopic;
+    std::shared_ptr<IWssContext> wssContextPtr;
+};
 } // namespace yijinc
 
 #endif
