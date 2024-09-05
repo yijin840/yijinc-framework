@@ -59,7 +59,7 @@ link_directories(${LOG4CPLUS_LIBRARY_DIRS}
 add_executable(yijinc ${SOURCES}
         src/exception/yijinc_exception.cpp
         src/exception/yijinc_exception.h
-        src/common/logger_macro.h)
+)
 
 add_definitions(-D_GNU_SOURCE)
 target_compile_definitions(yijinc PRIVATE BUFFERSIZE=16777216)

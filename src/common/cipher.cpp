@@ -1,11 +1,9 @@
 #include "cipher.h"
 #include "logger.h"
 #include <b64/encode.h>
-#include <cstring>
 #include <openssl/buffer.h>
 #include <openssl/evp.h>
 #include <openssl/hmac.h>
-#include <stdexcept>
 #include <string>
 #include <vector>
 

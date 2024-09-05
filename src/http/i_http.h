@@ -15,7 +15,7 @@ namespace yijinc {
 
         virtual ~IHttp() = default;
 
-        explicit IHttp(ClientType type = ClientType::CURL) : client_type(type) {
+        explicit IHttp(const ClientType type = ClientType::CURL) : client_type(type) {
         }
 
         /**

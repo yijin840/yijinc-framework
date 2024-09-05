@@ -31,9 +31,9 @@ namespace urls = boost::urls;
 using tcp = net::ip::tcp;
 
 namespace yijinc {
-    class BeastHttp final : public IHttp {
+    class BeastHttp final : public std::unique_ptr<IHttp> {
     public:
-        ~BeastHttp() override = default;
+        ~BeastHttp() = default;
     }; // namespace yijinc
 }
 #endif
