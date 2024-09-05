@@ -59,6 +59,9 @@ link_directories(${LOG4CPLUS_LIBRARY_DIRS}
 add_executable(yijinc ${SOURCES}
         src/exception/yijinc_exception.cpp
         src/exception/yijinc_exception.h
+        src/wss/i_wss_context.h
+        src/wss/beast_wss_context.cpp
+        src/wss/beast_wss_context.h
 )
 
 add_definitions(-D_GNU_SOURCE)

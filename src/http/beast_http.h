@@ -34,6 +34,7 @@ namespace yijinc {
     class BeastHttp final : public std::unique_ptr<IHttp> {
     public:
         ~BeastHttp() = default;
+
     }; // namespace yijinc
 }
 #endif

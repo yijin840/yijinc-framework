@@ -10,6 +10,5 @@
 using cipher = yijinc::Cipher;
 
 namespace yijinc {
-    BeastHttp::~BeastHttp() {
-    }
+
 } // namespace yijinc
