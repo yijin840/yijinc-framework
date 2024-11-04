@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "i_wss_context.h"
+#include "IWssContext.h"
 
 namespace yijinc {
 class IWss {

@@ -1,7 +1,7 @@
 #ifndef BEAST_HTTP_HPP
 #define BEAST_HTTP_HPP
 
-#include "i_http.h"
+#include "IHttp.h"
 
 #include <map>
 #include <string>

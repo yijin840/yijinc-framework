@@ -1,5 +1,5 @@
-#include "cipher.h"
-#include "logger.h"
+#include "Cipher.h"
+#include "Logger.h"
 #include <b64/encode.h>
 #include <openssl/buffer.h>
 #include <openssl/evp.h>

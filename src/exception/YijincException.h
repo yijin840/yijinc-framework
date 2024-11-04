@@ -3,16 +3,11 @@
 //
 #ifndef YIJINC_EXCEPTION_H
 #define YIJINC_EXCEPTION_H
-#include <boost/exception/exception.hpp>
-#include <boost/stacktrace.hpp>
 #include <cxxabi.h>
 #include <exception>
 #include <execinfo.h>
 #include <iostream>
-#include <locale>
 #include <sstream>
-#include <stdexcept>
-#include <utility>
 
 class YijincException final : public std::exception {
 public:
@@ -42,16 +37,6 @@ public:
         }
 
         free(symbols);
-        return oss.str();
-    }
-
-    [[nodiscard]] static std::string getStackTrace() {
-        const auto frames = boost::stacktrace::stacktrace();
-        std::ostringstream oss;
-        oss << "Stack trace:" << std::endl;
-        for (auto frame : frames) {
-            oss << "    " << frame << std::endl;
-        }
         return oss.str();
     }
 

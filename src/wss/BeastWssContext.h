@@ -5,7 +5,7 @@
 #define BEAST_WSS_CONTEXT_H
 #include <memory>
 
-#include "i_wss_context.h"
+#include "IWssContext.h"
 
 namespace yijinc {
 class BeastWssContext : public std::shared_ptr<IWssContext> {
