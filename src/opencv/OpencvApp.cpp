@@ -20,8 +20,9 @@ void OpencvApp::test() {
 void OpencvApp::printPiexl(cv::Mat image) {
     // 缩小图片至原来的1/8
     Mat resizedImage;
-    double scaleFactor = 1.0 / 8;
-    resize(image, resizedImage, Size(), image.cols / 8, scaleFactor, INTER_AREA);
+    int c = image.cols / 4;
+    int r = image.rows / 8;
+    resize(image, resizedImage, cv::Size(c, r), 0, 0, INTER_AREA);
     // 遍历每个像素并打印其值
     for (int y = 0; y < resizedImage.rows; y++) {
         for (int x = 0; x < resizedImage.cols; x++) {
