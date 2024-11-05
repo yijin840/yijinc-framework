@@ -33,12 +33,12 @@ void OpencvApp::test() {
     for (int y = 0; y < resizedImage.rows; y++) {
         for (int x = 0; x < resizedImage.cols; x++) {
             if (const uchar pixel = resizedImage.at<uchar>(y, x); pixel < 128) {
-                std::cout << "0 "; // 像素值低于阈值，打印 0
+                std::cout << "0 ";
             } else {
-                std::cout << "1 "; // 像素值高于或等于阈值，打印 1
-            }
+                std::cout << "1 ";
+            } 
         }
-        std::cout << std::endl; // 每行结束后换行
+        std::cout << std::endl;   
     }
 }
 

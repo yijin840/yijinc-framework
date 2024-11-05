@@ -1,7 +1,7 @@
 #ifndef LOGGER_HPP
 #define LOGGER_HPP
 
-#include "log4cplus/consoleappender.h"
+// #include "log4cplus/consoleappender.h"
 #include "log4cplus/logger.h"
 #include "log4cplus/loglevel.h"
 #include "string"
@@ -23,7 +23,6 @@
 
 #define LOG_WARN(fmt_str, ...) LOG4CPLUS_WARN(GET_LOGGER(), fmt::format(fmt_str, ##__VA_ARGS__))
 
-#define LOG_ERROR(fmt_str, ...) LOG4CPLUS_ERROR(GET_LOGGER(), fmt::format(fmt_str, ## __VA_ARGS__))
-
+#define LOG_ERROR(fmt_str, ...) LOG4CPLUS_ERROR(GET_LOGGER(), fmt::format(fmt_str, ##__VA_ARGS__))
 
 #endif

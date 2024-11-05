@@ -1,6 +1,6 @@
 #include "common/Logger.h"
 #include "exception/YijincException.h"
-#include "wss/UWebsocketsContext.h"
+// #include "wss/UWebsocketsContext.h"
 
 #include <boost/any.hpp> // generators
 #include <boost/asio/io_context.hpp>
@@ -16,9 +16,9 @@
 #include <nlohmann/json.hpp>
 #include <opencv/OpencvApp.h>
 #include <string>
+// #include <uWebSockets/App.h>
 #include <utility>
 #include <uuid/uuid.h>
-#include <uwebsockets/App.h>
 
 using json = nlohmann::json;
 using json = nlohmann::json;
@@ -90,10 +90,8 @@ string getRandom() {
     std::random_device rd;                       // 获取随机数种子
     std::mt19937 gen(rd());                      // 使用 Mersenne Twister 算法生成随机数
     std::uniform_int_distribution<> dis(0, 100); // 定义范围 [0, 5]
-
     // 生成并输出随机数
     const int randomNumber = dis(gen);
-
     return to_string(randomNumber);
 }
 
@@ -131,7 +129,7 @@ void setPath(crow::SimpleApp& app) {
     CROW_ROUTE(app, "/test").methods("GET"_method)([] {
         nlohmann::json r;
         // 获取historyModel副本
-        std::lock_guard lock(modelMutex); // 使用锁保护对共享数据的访问
+        std::lock_guard lock(modelMutex);
         const auto& historyModelCopy = *historyModel;
         for (const auto& [k, v] : historyModelCopy) {
             nlohmann::json arr;
@@ -157,10 +155,10 @@ void testCrow() {
     app->port(8001).loglevel(crow::LogLevel::Warning).multithreaded().run();
 }
 
-void testUws() {
-    UWebsocketsContext context;
-    context.initApp();
-}
+// void testUws() {
+//     UWebsocketsContext context;
+//     context.initApp();
+// }
 
 int main() {
     // testSteadyTimer();
@@ -177,7 +175,6 @@ int main() {
     //    model.reset();
     //    // std::thread([] { testUws(); }).detach();
     OpencvApp::test();
-    OpencvApp::loadImg();
     const long a = std::abs(1);
     cout << "hello world" << endl;
     return 0;
