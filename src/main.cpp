@@ -160,7 +160,43 @@ void testCrow() {
 //     context.initApp();
 // }
 
+void printColor() {
+    // 重置颜色
+    const std::string reset = "\033[0m";
+
+    // 字体颜色
+    const std::string red = "\033[31m";
+    const std::string green = "\033[32m";
+    const std::string yellow = "\033[33m";
+    const std::string blue = "\033[34m";
+    const std::string magenta = "\033[35m";
+    const std::string cyan = "\033[36m";
+    const std::string white = "\033[37m";
+
+    // 背景颜色
+    const std::string bg_red = "\033[41m";
+    const std::string bg_green = "\033[42m";
+    const std::string bg_yellow = "\033[43m";
+    const std::string bg_blue = "\033[44m";
+    const std::string bg_magenta = "\033[45m";
+    const std::string bg_cyan = "\033[46m";
+    const std::string bg_white = "\033[47m";
+
+    // 打印不同颜色的文本
+    std::cout << red << "This is red text!" << reset << std::endl;
+    std::cout << green << "This is green text!" << reset << std::endl;
+    std::cout << yellow << "This is yellow text!" << reset << std::endl;
+    std::cout << blue << "This is blue text!" << reset << std::endl;
+    std::cout << magenta << "This is magenta text!" << reset << std::endl;
+    std::cout << cyan << "This is cyan text!" << reset << std::endl;
+    std::cout << white << "This is white text!" << reset << std::endl;
+
+    // 打印带背景的文本
+    std::cout << bg_red << white << "This is white text on red background!" << reset << std::endl;
+}
+
 int main() {
+    init();
     // testSteadyTimer();
     // std::thread t([&] { ioc.run(); });
     // t.detach();
@@ -174,8 +210,11 @@ int main() {
     //    it.shrink_to_fit();
     //    model.reset();
     //    // std::thread([] { testUws(); }).detach();
+    printColor();
     OpencvApp::test();
-    const long a = std::abs(1);
+    long x = 1;
+    const long a = std::abs(x);
+    LOG_INFO("result a: {}", a);
     cout << "hello world" << endl;
     return 0;
 }
